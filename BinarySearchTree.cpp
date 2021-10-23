@@ -1,4 +1,4 @@
-#include"Head1.h"
+#include"Head.h"
 
 void MENU(tree &t)
 {
