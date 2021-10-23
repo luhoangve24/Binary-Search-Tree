@@ -55,7 +55,7 @@ void addNode(tree &t, int x)
 }
 
 //-------------------------------------------------------------------DUYET CAY----------------------------------------------------------------------------
-void traversalNLR(tree t) //Duyet theo kieu Node - Left - Right
+void traversalNLR(tree t) //Duyet theo kieu Node - Left - Right - PreOrder
 {
 	if (t != NULL)
 	{
@@ -324,7 +324,7 @@ void leftMostchild(tree &t, tree &sub) //Di tim Node ben trai nhat cua cay ben p
 	{
 		t->data = sub->data; // Tim duoc roi, cap nhat lai data Node can xoa
 		t = sub; // Cho cho con tro node can xoa tro den Node thay the, thoat ra se xoa Node do
-		sub = NULL; // Cap nhat lai lien ket giua cha va Node bi the mang
+		sub = NULL; // Cap nhat lai lien ket giua cha va Node can xoa sau khi bi xoa (NULL)
 	}
 }
 
@@ -357,8 +357,7 @@ void deleteNODE(tree &t, int x) //Xoa 1 Node
 			}
 			else // truong hop la Node co ca 2 con, tuong tu (t->childLeft != NULL && t->childRight != NULL)
 			{
-				node *sub = tmp_del->childRight; // Dung de lay ra cay con phai cua Node can xoa
-				leftMostchild(tmp_del,sub); // Tim ra Node trai nhat cua cay con phai
+				leftMostchild(tmp_del, t->childRight); // Tim ra Node trai nhat cua cay con phai
 			}
 			free(tmp_del); // Giai phong
 		}
